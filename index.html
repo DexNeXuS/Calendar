@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Saved Templates</h3>
+            <div id="templates-container">
+                <!-- Templates will be added here -->
+            </div>
+            <button onclick="openTemplateModal()">Add New Template</button>
+            <button onclick="confirmClearTemplates()" class="clear-templates-btn">Clear Templates</button>
+        </div>
+
+        <div class="main-content">
+            <header>
+                <h1>Our Calendar</h1>
+                <div class="filters">
+                    <button onclick="filterEvents('all')" class="active">Show All</button>
+                    <button onclick="filterEvents('declan')">Declan</button>
+                    <button onclick="filterEvents('amy')">Amy</button>
+                    <button onclick="confirmClearMonth()" class="clear-month-btn">Clear Month</button>
+                </div>
+            </header>
+
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button onclick="previousMonth()">&lt;</button>
+                    <h2 id="monthDisplay"></h2>
+                    <button onclick="nextMonth()">&gt;</button>
+                </div>
+                <div class="calendar" id="calendar">
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="calendar-days"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="eventModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3 id="modalTitle">Add Event</h3>
+                <form id="eventForm">
+                    <input type="text" id="eventTitle" placeholder="Event Title" required>
+                    <div class="time-picker">
+                        <label>Start Time:</label>
+                        <select id="eventStartHour"></select>
+                        <select id="eventStartMinute"></select>
+                    </div>
+                    <div class="time-picker">
+                        <label>End Time:</label>
+                        <select id="eventEndHour"></select>
+                        <select id="eventEndMinute"></select>
+                    </div>
+                    <textarea id="eventDescription" placeholder="Event Description"></textarea>
+                    <select id="eventUser">
+                        <option value="both">Both</option>
+                        <option value="declan">Declan</option>
+                        <option value="amy">Amy</option>
+                    </select>
+                    <select id="eventColor">
+                        <option value="#ff6b6b" style="background-color: #ff6b6b">Red</option>
+                        <option value="#4ecdc4" style="background-color: #4ecdc4">Turquoise</option>
+                        <option value="#45b7d1" style="background-color: #45b7d1">Blue</option>
+                        <option value="#96ceb4" style="background-color: #96ceb4">Green</option>
+                        <option value="#ffeead" style="background-color: #ffeead">Yellow</option>
+                        <option value="#ff9999" style="background-color: #ff9999">Pink</option>
+                        <option value="#d4a4ff" style="background-color: #d4a4ff">Purple</option>
+                        <option value="#ffcc5c" style="background-color: #ffcc5c">Orange</option>
+                    </select>
+                    <button type="submit">Save Event</button>
+                    <button type="button" id="deleteEventBtn" style="display: none; background-color: #ff4444;">Delete Event</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="templateModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Create Template</h3>
+                <form id="templateForm">
+                    <input type="text" id="templateTitle" placeholder="Template Title" required>
+                    <div class="time-picker">
+                        <label>Start Time:</label>
+                        <select id="templateStartHour"></select>
+                        <select id="templateStartMinute"></select>
+                    </div>
+                    <div class="time-picker">
+                        <label>End Time:</label>
+                        <select id="templateEndHour"></select>
+                        <select id="templateEndMinute"></select>
+                    </div>
+                    <textarea id="templateDescription" placeholder="Template Description"></textarea>
+                    <select id="templateUser">
+                        <option value="both">Both</option>
+                        <option value="declan">Declan</option>
+                        <option value="amy">Amy</option>
+                    </select>
+                    <select id="templateColor">
+                        <option value="#ff6b6b" style="background-color: #ff6b6b">Red</option>
+                        <option value="#4ecdc4" style="background-color: #4ecdc4">Turquoise</option>
+                        <option value="#45b7d1" style="background-color: #45b7d1">Blue</option>
+                        <option value="#96ceb4" style="background-color: #96ceb4">Green</option>
+                        <option value="#ffeead" style="background-color: #ffeead">Yellow</option>
+                        <option value="#ff9999" style="background-color: #ff9999">Pink</option>
+                        <option value="#d4a4ff" style="background-color: #d4a4ff">Purple</option>
+                        <option value="#ffcc5c" style="background-color: #ffcc5c">Orange</option>
+                    </select>
+                    <button type="submit">Save Template</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
